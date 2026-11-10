@@ -99,102 +99,115 @@
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
   }
 
-  // Show destination-specific photos, using copies without embedded metadata.
+  // Inline, accessible, destination-specific photo gallery (no modal).
   const galleries = {
-    ladakh: { title: 'Ladakh', photos: [
-      {src:'assets/rides/ladakh-khardung-la.webp', caption:'At Khardung La', alt:'Utkarsh beside the Khardung La mountain pass sign'},
-      {src:'assets/rides/ladakh-rc390.webp', caption:'A moment with my KTM RC 390 on a Ladakh highway', alt:'Utkarsh leaning toward his orange KTM RC 390 on an open Himalayan road'}
+    ladakh: {title:'Ladakh', photos:[
+      {src:'assets/rides/ladakh-khardung-la.webp', caption:'At Khardung La.', alt:'Utkarsh sitting in front of the Khardung La mountain pass sign'},
+      {src:'assets/rides/ladakh-rc390.webp', caption:'A moment with my KTM RC 390 on a Ladakh highway.', alt:'Utkarsh with his orange KTM RC 390 on an open mountain road'}
     ]},
-    zanskar: { title: 'Zanskar', photos: [
-      {src:'assets/rides/zanskar-gombo-ranjan.webp', caption:'Gombo Ranjan and the Zanskar landscape', alt:'Utkarsh in front of the imposing Gombo Ranjan mountain, with prayer flags'}
+    zanskar: {title:'Zanskar', photos:[
+      {src:'assets/rides/zanskar-gombo-ranjan.webp',caption:'The striking Gombo Ranjan peak in Zanskar.',alt:'Utkarsh at Gombo Ranjan peak, with colorful prayer flags'}
     ]},
-    himachal: { title: 'Himachal', photos: [] },
-    sikkim: { title: 'Sikkim', photos: [
-      {src:'assets/rides/sikkim-snow-pass.webp', caption:'Snowy mountain roads in Sikkim', alt:'Utkarsh pointing toward snow-covered mountains from beside his motorcycle'},
-      {src:'assets/rides/sikkim-rc390.webp', caption:'A mountain stop with the RC 390', alt:'Utkarsh in riding gear standing near his orange KTM RC 390 with snowy peaks behind'}
+    himachal: {title:'Himachal', photos:[
+      {src:'assets/rides/himachal-stadium.webp',caption:'A stop at a mountain cricket ground in Himachal.',alt:'Utkarsh seated at a cricket stadium with mountains in the background'}
+    ]},
+    sikkim: {title:'Sikkim', photos:[
+      {src:'assets/rides/sikkim-snow-pass.webp',caption:'Snow-covered routes in Sikkim.',alt:'Utkarsh pointing toward a snowy mountain road in Sikkim'},
+      {src:'assets/rides/sikkim-rc390.webp',caption:'On the road with the RC 390 in Sikkim.',alt:'Utkarsh standing next to his orange KTM RC 390 with snow-covered peaks behind'}
+    ]},
+    kashmir: {title:'Kashmir', photos:[
+      {src:'assets/rides/kashmir-highway.webp',caption:'An open stretch of road in Kashmir.',alt:'Winding mountain road beneath expansive clouds in Kashmir'},
+      {src:'assets/rides/kashmir-zojila.webp',caption:'KTM RC 390 at Zojila Pass.',alt:'Utkarsh on the orange KTM RC 390 at the Zojila Pass sign'}
     ]}
   };
-  const galleryDialog = document.getElementById('ride-gallery');
-  if (galleryDialog) {
-    const galleryTitle = document.getElementById('ride-gallery-title');
-    const galleryImage = document.getElementById('ride-gallery-image');
-    const galleryEmpty = document.getElementById('ride-gallery-empty');
-    const galleryCaption = document.getElementById('ride-gallery-caption');
-    const galleryCount = document.getElementById('ride-gallery-count');
+  const galleryPanel = document.getElementById('ride-inline-gallery');
+  if (galleryPanel) {
+    const tabs = [...document.querySelectorAll('.ride-place')];
+    const image = document.getElementById('ride-gallery-image');
+    const title = document.getElementById('ride-gallery-title');
+    const count = document.getElementById('ride-gallery-count');
+    const dots = document.getElementById('ride-photo-dots');
+    const caption = document.getElementById('ride-gallery-caption');
+    const thumbs = document.getElementById('ride-photo-strip');
+    const total = document.getElementById('ride-photo-total');
     const prev = document.getElementById('ride-prev');
     const next = document.getElementById('ride-next');
-    const close = document.getElementById('ride-close');
-    let active = 'ladakh';
-    let index = 0;
-    let trigger = null;
+    let currentPlace = 'kashmir';
+    let currentPhoto = 0;
 
-    function renderGallery() {
-      const gallery = galleries[active];
-      const photos = gallery.photos;
-      galleryTitle.textContent = gallery.title;
-      if (photos.length) {
-        const photo = photos[index];
-        galleryImage.src = photo.src;
-        galleryImage.alt = photo.alt;
-        galleryImage.hidden = false;
-        galleryEmpty.hidden = true;
-        galleryCaption.textContent = photo.caption;
-        galleryCount.textContent = `${index + 1} / ${photos.length}`;
-      } else {
-        galleryImage.hidden = true;
-        galleryImage.removeAttribute('src');
-        galleryEmpty.hidden = false;
-        galleryCaption.textContent = 'More highlights from Himachal to come.';
-        galleryCount.textContent = '';
+    function renderPhoto() {
+      const gallery = galleries[currentPlace];
+      const photo = gallery.photos[currentPhoto];
+      image.src = photo.src;
+      image.alt = photo.alt;
+      title.textContent = gallery.title;
+      count.textContent = `${currentPhoto + 1} of ${gallery.photos.length}`;
+      caption.textContent = photo.caption;
+      dots.replaceChildren();
+      for (let i=0;i<gallery.photos.length;i++) {
+        const dot=document.createElement('i');
+        if (i===currentPhoto) dot.classList.add('selected');
+        dots.appendChild(dot);
       }
-      prev.disabled = photos.length < 2;
-      next.disabled = photos.length < 2;
+      dots.setAttribute('aria-label',`Photo ${currentPhoto+1} of ${gallery.photos.length}`);
+      thumbs.querySelectorAll('.ride-thumb').forEach(node=>node.remove());
+      gallery.photos.forEach((item,i)=>{
+        const button=document.createElement('button');
+        button.type='button';
+        button.className='ride-thumb'+(i===currentPhoto?' active':'');
+        button.setAttribute('aria-label',`Show ${gallery.title} photo ${i+1}`);
+        button.setAttribute('aria-pressed',String(i===currentPhoto));
+        const thumb=document.createElement('img');
+        thumb.src=item.src;
+        thumb.alt='';
+        thumb.loading='lazy';
+        button.appendChild(thumb);
+        button.addEventListener('click',()=>{currentPhoto=i;renderPhoto();});
+        thumbs.insertBefore(button,total);
+      });
+      total.textContent=`${gallery.title} · ${gallery.photos.length} ${gallery.photos.length===1?'photo':'photos'}`;
+      prev.disabled=gallery.photos.length<2;
+      next.disabled=gallery.photos.length<2;
     }
 
-    document.querySelectorAll('[data-gallery]').forEach(button => {
-      button.addEventListener('click', () => {
-        const selected = button.dataset.gallery;
-        if (!galleries[selected]) return;
-        trigger = button;
-        active = selected;
-        index = 0;
-        renderGallery();
-        galleryDialog.showModal();
-        body.classList.add('ride-modal-open');
-        close.focus();
+    function selectPlace(place) {
+      if (!galleries[place]) return;
+      // The selected destination stays expanded and can be changed with one click.
+      currentPlace=place;
+      currentPhoto=0;
+      tabs.forEach(tab=>{
+        const on=tab.dataset.gallery===place;
+        tab.classList.toggle('active',on);
+        tab.setAttribute('aria-expanded',String(on));
+        tab.setAttribute('aria-pressed',String(on));
       });
-    });
-    function stepPhoto(amount) {
-      const photos = galleries[active].photos;
-      if (photos.length < 2) return;
-      index = (index + amount + photos.length) % photos.length;
-      renderGallery();
+      galleryPanel.hidden=false;
+      renderPhoto();
     }
-    prev.addEventListener('click', () => stepPhoto(-1));
-    next.addEventListener('click', () => stepPhoto(1));
-    close.addEventListener('click', () => galleryDialog.close());
-    galleryDialog.addEventListener('close', () => {
-      body.classList.remove('ride-modal-open');
-      if (trigger) trigger.focus();
+    tabs.forEach(button=>button.addEventListener('click',()=>selectPlace(button.dataset.gallery)));
+    function stepPhoto(amount){
+      const len=galleries[currentPlace].photos.length;
+      if(len<2)return;
+      currentPhoto=(currentPhoto+amount+len)%len;
+      renderPhoto();
+    }
+    prev.addEventListener('click',()=>stepPhoto(-1));
+    next.addEventListener('click',()=>stepPhoto(1));
+    galleryPanel.addEventListener('keydown',e=>{
+      if(e.key==='ArrowRight'){e.preventDefault();stepPhoto(1);}
+      if(e.key==='ArrowLeft'){e.preventDefault();stepPhoto(-1);}
     });
-    galleryDialog.addEventListener('click', event => {
-      const rect = galleryDialog.getBoundingClientRect();
-      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) galleryDialog.close();
-    });
-    galleryDialog.addEventListener('keydown', event => {
-      if (event.key === 'ArrowRight') { event.preventDefault(); stepPhoto(1); }
-      if (event.key === 'ArrowLeft') { event.preventDefault(); stepPhoto(-1); }
-    });
+    selectPlace('kashmir');
   }
 
-  // Explicitly scroll to the top on every click, including when #top is already in the URL.
-  document.querySelectorAll('a[href="#top"]').forEach(link => {
-    link.addEventListener('click', event => {
+  // Force top navigation even when already on #top or after browser-history restoration.
+  document.querySelectorAll('a[href="#top"]').forEach(link=>{
+    link.addEventListener('click',event=>{
       event.preventDefault();
-      window.scrollTo({top:0,left:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
-      // Do not leave an unnecessary #top fragment in the shareable URL.
-      if (window.location.hash) window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      window.scrollTo({top:0,left:0,behavior:'instant'});
+      document.documentElement.scrollTop=0;
+      document.body.scrollTop=0;
+      if(window.location.hash) window.history.replaceState(null,'',window.location.pathname+window.location.search);
     });
   });
-
 })();

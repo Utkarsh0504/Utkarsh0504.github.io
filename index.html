@@ -52,30 +52,18 @@
         </div>
         <div class="hero-bottom"><span class="hero-bottom-label">CURRENT FOCUS</span><span>Cloud migration · .NET 10 · Azure services</span></div>
       </div>
-      <div class="hero-visual" aria-label="Rotating technology diagram with .NET 10 at the centre and Azure Cloud, Angular, SQL Server, DevOps, C# and Web API orbiting it" role="img">
-        <div class="visual-halo" aria-hidden="true"></div>
-        <div class="architecture-frame">
-          <div class="architecture-top"><span><span class="status-light"></span> SYSTEMS / MODERNIZATION</span><span>01 — 04</span></div>
-          <div class="orbital-field" aria-hidden="true">
-            <div class="orbit-track orbit-track-outer">
-              <div class="orbit-rotor">
-                <div class="orbit-point orbit-top"><span class="orbit-token">☁ Azure Cloud</span></div>
-                <div class="orbit-point orbit-right"><span class="orbit-token">△ Angular 22</span></div>
-                <div class="orbit-point orbit-bottom"><span class="orbit-token">▥ SQL Server</span></div>
-                <div class="orbit-point orbit-left"><span class="orbit-token">◇ Azure DevOps</span></div>
-              </div>
-            </div>
-            <div class="orbit-track orbit-track-inner">
-              <div class="orbit-rotor">
-                <div class="orbit-point orbit-top"><span class="orbit-token">⌘ Web API</span></div>
-                <div class="orbit-point orbit-bottom"><span class="orbit-token">{ } C#</span></div>
-              </div>
-            </div>
-            <div class="center-core"><div class="core-mini">CORE / PLATFORM</div><div class="core-name">.NET <strong>10</strong></div><div class="core-caption">application layer</div></div>
-          </div>
-          <div class="architecture-footer"><span>MODERNIZE</span><span class="footer-line"></span><span>SECURE</span><span class="footer-line"></span><span>OBSERVE</span></div>
+      <div class="hero-visual" aria-label="Animated solar-system diagram with .NET 10 at the centre, surrounded by Azure Cloud, Angular 22, SQL Server, Azure DevOps, Web API and C#" role="img">
+        <div class="orbit-universe" aria-hidden="true">
+          <div class="orbit-ring orbit-ring-outer"></div><div class="orbit-ring orbit-ring-inner"></div>
+          <div class="orbit-star star-1"></div><div class="orbit-star star-2"></div><div class="orbit-star star-3"></div><div class="orbit-star star-4"></div><div class="orbit-star star-5"></div><div class="orbit-star star-6"></div>
+          <div class="orbit-core"><span>CORE / PLATFORM</span><strong>.NET <em>10</em></strong><small>application layer</small></div>
+          <div class="orbiting-node" style="--delay:0s;--angle:0deg"><span class="orbit-chip"><span class="chip-glyph">☁</span> Azure Cloud</span></div>
+          <div class="orbiting-node" style="--delay:-11s;--angle:60deg"><span class="orbit-chip"><span class="chip-glyph angular-glyph">⬡</span> Angular 22</span></div>
+          <div class="orbiting-node" style="--delay:-22s;--angle:120deg"><span class="orbit-chip"><span class="chip-glyph">▤</span> SQL Server</span></div>
+          <div class="orbiting-node" style="--delay:-33s;--angle:180deg"><span class="orbit-chip"><span class="chip-glyph">⬡</span> Azure DevOps</span></div>
+          <div class="orbiting-node" style="--delay:-44s;--angle:240deg"><span class="orbit-chip"><span class="chip-glyph">&lt;/&gt;</span> Web API</span></div>
+          <div class="orbiting-node" style="--delay:-55s;--angle:300deg"><span class="orbit-chip"><span class="chip-glyph">{ }</span> C#</span></div>
         </div>
-        <div class="visual-caption"><span>ENGINEERING FOCUS</span><span>01 / CURRENT WORK</span></div>
       </div>
       <a class="scroll-cue" href="#proof"><span class="scroll-line" aria-hidden="true"></span> SCROLL TO EXPLORE</a>
     </section>
@@ -102,7 +90,8 @@
         <div class="section-top reveal"><span class="section-index">02 / SELECTED WORK</span><span class="section-rule"></span><span class="section-top-aside">PROJECTS & IMPACT</span></div>
         <div class="section-heading-row reveal"><div><p class="kicker">A LOOK UNDER THE HOOD</p><h2 id="work-heading">Selected <span class="soft-accent">engineering work.</span></h2></div><p>Four enterprise projects spanning cloud modernization, platform automation, APIs, and document processing.</p></div>
         <div class="project-grid">
-          <article class="project-card project-featured reveal">
+          <div class="project-column">
+          <article class="project-card project-order-1 project-featured reveal">
             <div class="project-card-top"><span class="project-count">/ 01</span><span class="project-period"><span class="online-dot"></span> JAN 2026 — PRESENT</span></div>
             <div class="project-symbol symbol-cloud" aria-hidden="true"><span>☁</span><em>10</em></div>
             <p class="project-classification">CLOUD / APPLICATION MODERNIZATION</p>
@@ -112,17 +101,7 @@
             <button class="project-more" type="button" aria-expanded="false" aria-controls="details-azure">Technical details <span aria-hidden="true">↗</span></button>
             <div class="project-details" id="details-azure" hidden><p>Hands-on contributions</p><ul><li>Upgraded established .NET projects to .NET 10 while retaining existing business functionality.</li><li>Deployed upgraded services to Microsoft Azure as part of the ongoing migration.</li><li>Integrated Azure Application Insights for application telemetry and Azure Key Vault for secure configuration.</li><li>Worked with application user management, identity federation and token-based authentication flows.</li><li>Worked with teammates on upgrading an Angular application from version 19 to 22.</li></ul></div>
           </article>
-          <article class="project-card reveal">
-            <div class="project-card-top"><span class="project-count">/ 02</span><span class="project-period">STARTED JAN 2024</span></div>
-            <div class="project-symbol symbol-data" aria-hidden="true"><span>{ }</span></div>
-            <p class="project-classification">SQL SERVER / AUTOMATION</p>
-            <h3>Lender Onboarding Automation</h3>
-            <p class="project-intro">Developed SQL-based configuration and import routines for onboarding lenders onto a title-insurance platform, with less repetitive setup work.</p>
-            <p class="project-context"><b>My focus</b> Reusable procedures, dependent configuration data, and repeatable onboarding steps.</p><div class="chip-row"><span>T-SQL</span><span>SQL Server</span><span>PowerShell</span></div>
-            <button class="project-more" type="button" aria-expanded="false" aria-controls="details-lender">Technical details <span aria-hidden="true">↗</span></button>
-            <div class="project-details" id="details-lender" hidden><p>Hands-on contributions</p><ul><li>Built reusable T-SQL stored procedures and scalar functions for lender setup.</li><li>Handled structured configuration covering lender details, contacts, locations, products and preferences.</li><li>Contributed to PowerShell-driven orchestration of repeatable onboarding operations.</li><li>Coordinated with teams across three time zones, helping protect ongoing business operations.</li><li>Supported the goal of shortening onboarding from several weeks to roughly one week.</li></ul></div>
-          </article>
-          <article class="project-card reveal">
+          <article class="project-card project-order-3 reveal">
             <div class="project-card-top"><span class="project-count">/ 03</span><span class="project-period">2022 — 2024</span></div>
             <div class="project-symbol symbol-api" aria-hidden="true"><span>&lt;/&gt;</span></div>
             <p class="project-classification">BACKEND / PERFORMANCE</p>
@@ -132,7 +111,19 @@
             <button class="project-more" type="button" aria-expanded="false" aria-controls="details-api">Technical details <span aria-hidden="true">↗</span></button>
             <div class="project-details" id="details-api" hidden><p>Hands-on contributions</p><ul><li>Built Web APIs and background services for document registration.</li><li>Maintained administrative interfaces in VB.NET Web Forms and JavaScript.</li><li>Reduced processing time from 15 minutes to 5 minutes.</li></ul></div>
           </article>
-          <article class="project-card reveal">
+          </div>
+          <div class="project-column">
+          <article class="project-card project-order-2 reveal">
+            <div class="project-card-top"><span class="project-count">/ 02</span><span class="project-period">STARTED JAN 2024</span></div>
+            <div class="project-symbol symbol-data" aria-hidden="true"><span>{ }</span></div>
+            <p class="project-classification">SQL SERVER / AUTOMATION</p>
+            <h3>Lender Onboarding Automation</h3>
+            <p class="project-intro">Developed SQL-based configuration and import routines for onboarding lenders onto a title-insurance platform, with less repetitive setup work.</p>
+            <p class="project-context"><b>My focus</b> Reusable procedures, dependent configuration data, and repeatable onboarding steps.</p><div class="chip-row"><span>T-SQL</span><span>SQL Server</span><span>PowerShell</span></div>
+            <button class="project-more" type="button" aria-expanded="false" aria-controls="details-lender">Technical details <span aria-hidden="true">↗</span></button>
+            <div class="project-details" id="details-lender" hidden><p>Hands-on contributions</p><ul><li>Built reusable T-SQL stored procedures and scalar functions for lender setup.</li><li>Handled structured configuration covering lender details, contacts, locations, products and preferences.</li><li>Contributed to PowerShell-driven orchestration of repeatable onboarding operations.</li><li>Coordinated with teams across three time zones, helping protect ongoing business operations.</li><li>Supported the goal of shortening onboarding from several weeks to roughly one week.</li></ul></div>
+          </article>
+          <article class="project-card project-order-4 reveal">
             <div class="project-card-top"><span class="project-count">/ 04</span><span class="project-period">2021 — 2022</span></div>
             <div class="project-symbol symbol-docs" aria-hidden="true"><span>▤</span></div>
             <p class="project-classification">.NET / DOCUMENT ENGINEERING</p>
@@ -142,6 +133,7 @@
             <button class="project-more" type="button" aria-expanded="false" aria-controls="details-closing">Technical details <span aria-hidden="true">↗</span></button>
             <div class="project-details" id="details-closing" hidden><p>Hands-on contributions</p><ul><li>Created more than 30 data-centric templates for insurance workflows.</li><li>Worked throughout design, implementation, deployment, and testing.</li><li>Helped lower SonarQube issues to approximately 2% and improve coverage to 75.3%.</li><li>Shared technical knowledge with five teammates.</li></ul></div>
           </article>
+          </div>
         </div>
       </div>
     </section>
@@ -181,21 +173,30 @@
           <p class="kicker">OFF THE KEYBOARD, ON TWO WHEELS</p>
           <h2 id="beyond-heading">Curious by nature.<br><span class="soft-accent">A biker at heart.</span></h2>
           <p>When I'm not working on software, you'll usually find me planning the next motorcycle trip or exploring unfamiliar roads. Long-distance touring is one of my favorite ways to spend time off — especially in the Himalayas.</p>
-          <p>I've explored routes through Ladakh, Zanskar, Himachal and Sikkim on my KTM RC 390. Every ride comes with its own mix of planning, changing conditions and memorable landscapes.</p>
+          <p>I've explored routes through Ladakh, Zanskar, Himachal, Sikkim and Kashmir on my KTM RC 390. Every ride comes with its own mix of planning, changing conditions and memorable landscapes.</p>
         </div>
         <div class="beyond-panel reveal">
-          <div class="beyond-panel-head"><span class="beyond-emoji" aria-hidden="true">↗</span><span>RIDING JOURNAL / HIGHLIGHTS</span></div>
-          <div class="beyond-moto"><span class="beyond-label">MY RIDE</span><strong>KTM RC 390</strong></div>
-          <div class="beyond-moto"><span class="beyond-label">FAVORITE TERRAIN</span><strong>Mountain roads &amp; high-altitude routes</strong></div>
-          <div class="beyond-routes">
-            <span class="beyond-label">PLACES I'VE EXPLORED</span>
-            <div class="beyond-route-pills" role="group" aria-label="Ride destinations and photo highlights">
-              <button type="button" class="ride-place" data-gallery="ladakh" aria-haspopup="dialog">Ladakh <span aria-hidden="true">↗</span></button>
-              <button type="button" class="ride-place" data-gallery="zanskar" aria-haspopup="dialog">Zanskar <span aria-hidden="true">↗</span></button>
-              <button type="button" class="ride-place" data-gallery="himachal" aria-haspopup="dialog">Himachal <span aria-hidden="true">↗</span></button>
-              <button type="button" class="ride-place" data-gallery="sikkim" aria-haspopup="dialog">Sikkim <span aria-hidden="true">↗</span></button>
+          <div class="beyond-panel-head"><span class="gallery-status-dot" aria-hidden="true"></span><span>PLACES I'VE EXPLORED</span></div>
+          <div class="beyond-route-pills" role="group" aria-label="Select a ride destination">
+            <button type="button" class="ride-place" data-gallery="ladakh" aria-controls="ride-inline-gallery" aria-expanded="false">Ladakh</button>
+            <button type="button" class="ride-place" data-gallery="zanskar" aria-controls="ride-inline-gallery" aria-expanded="false">Zanskar</button>
+            <button type="button" class="ride-place" data-gallery="himachal" aria-controls="ride-inline-gallery" aria-expanded="false">Himachal</button>
+            <button type="button" class="ride-place" data-gallery="sikkim" aria-controls="ride-inline-gallery" aria-expanded="false">Sikkim</button>
+            <button type="button" class="ride-place active" data-gallery="kashmir" aria-controls="ride-inline-gallery" aria-expanded="true">Kashmir</button>
+          </div>
+          <div class="ride-inline-gallery" id="ride-inline-gallery" role="region" aria-label="Riding photographs">
+            <div class="ride-main-photo">
+              <img id="ride-gallery-image" src="assets/rides/kashmir-highway.webp" alt="Open road through a mountain valley in Kashmir" width="1500" height="1000" loading="lazy" decoding="async">
+              <button type="button" id="ride-prev" class="ride-arrow ride-prev" aria-label="Previous riding photo">&#8249;</button>
+              <button type="button" id="ride-next" class="ride-arrow ride-next" aria-label="Next riding photo">&#8250;</button>
+              <div class="ride-main-caption"><span class="photo-location"><span aria-hidden="true">⌖</span> <span id="ride-gallery-title">Kashmir</span> <span aria-hidden="true">·</span> <span id="ride-gallery-count">1 of 2</span></span><span class="photo-dots" id="ride-photo-dots" aria-label="Photo 1 of 2"><i class="selected"></i><i></i></span></div>
             </div>
-            <p class="ride-hint">Click a destination to view ride photos.</p>
+            <div class="ride-photo-strip" id="ride-photo-strip" aria-label="Select a photograph">
+              <button type="button" class="ride-thumb active" data-photo-index="0" aria-label="Show Kashmir highway photo"><img src="assets/rides/kashmir-highway.webp" alt="" loading="lazy"></button>
+              <button type="button" class="ride-thumb" data-photo-index="1" aria-label="Show Kashmir Zojila Pass photo"><img src="assets/rides/kashmir-zojila.webp" alt="" loading="lazy"></button>
+              <span class="ride-photo-total" id="ride-photo-total">Kashmir · 2 photos</span>
+            </div>
+            <p id="ride-gallery-caption" class="ride-photo-description" aria-live="polite">An open stretch of road in Kashmir.</p>
           </div>
         </div>
       </div>
@@ -203,38 +204,17 @@
 
     <section class="contact-section" id="contact" aria-labelledby="contact-heading"><div class="layout contact-inner">
       <div class="reveal"><p class="kicker">07 / GET IN TOUCH</p><h2 id="contact-heading">Let's build something <span class="gradient-text">that lasts.</span></h2><p>Interested in .NET, backend, or Azure engineering opportunities? I'd be glad to connect.</p><div class="contact-actions">
-        <a class="button button-primary" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=singhutkarsh224%40gmail.com&amp;su=Hello%20Utkarsh%20-%20Engineering%20Opportunity" target="_blank" rel="noopener noreferrer" aria-label="Compose an email to Utkarsh in Gmail">Compose in Gmail <span aria-hidden="true">↗</span></a>
-        <a class="button button-ghost" href="mailto:singhutkarsh224@gmail.com?subject=Hello%20Utkarsh%20-%20Engineering%20Opportunity" aria-label="Compose an email using your default email application">Use email app <span aria-hidden="true">↗</span></a>
+        <a class="button button-primary" href="mailto:singhutkarsh224@gmail.com?subject=Hello%20Utkarsh%20-%20Engineering%20Opportunity" aria-label="Email Utkarsh using your chosen mail application, including Outlook or Gmail">Send me an email <span aria-hidden="true">↗</span></a>
         <button id="copy-email" class="button button-ghost" type="button" data-email="singhutkarsh224@gmail.com">Copy email <span aria-hidden="true">⧉</span></button>
         <a class="button button-ghost" href="https://www.linkedin.com/in/utkarsh-singh-5039b7153/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
       </div>
-      <span class="contact-mail">singhutkarsh224@gmail.com</span>
-      <p class="contact-note">Choose Gmail or your email app to open a message, then press Send. No mail app installed? Use Copy email.</p><div class="copy-status" id="copy-status" role="status" aria-live="polite"></div></div>
+      <a class="contact-mail" href="mailto:singhutkarsh224@gmail.com">singhutkarsh224@gmail.com</a>
+      <p class="contact-note">Opens your preferred email app, including Outlook or Gmail. You can also copy the address.</p><div class="copy-status" id="copy-status" role="status" aria-live="polite"></div></div>
       <div class="contact-watermark" aria-hidden="true">US<span>.</span></div>
     </div></section>
   </main>
 
 
-  <dialog id="ride-gallery" class="ride-dialog" aria-labelledby="ride-gallery-title" aria-describedby="ride-gallery-caption">
-    <div class="ride-dialog-head">
-      <div><p class="ride-dialog-eyebrow">BEYOND THE CODE / ON TWO WHEELS</p><h2 id="ride-gallery-title">Ride highlights</h2></div>
-      <button type="button" class="ride-dialog-close" id="ride-close" aria-label="Close photo gallery">×</button>
-    </div>
-    <div class="ride-dialog-stage">
-      <img id="ride-gallery-image" alt="" src="" decoding="async">
-      <div id="ride-gallery-empty" class="ride-gallery-empty" hidden>
-        <div aria-hidden="true">✦</div><p>Himachal adventures</p><span>More photos from the ride to come.</span>
-      </div>
-    </div>
-    <div class="ride-dialog-foot">
-      <p id="ride-gallery-caption" aria-live="polite">A moment from the road.</p>
-      <div class="ride-gallery-controls"><span id="ride-gallery-count" aria-live="polite"></span>
-        <button type="button" id="ride-prev" aria-label="Previous photo">←</button>
-        <button type="button" id="ride-next" aria-label="Next photo">→</button>
-      </div>
-    </div>
-  </dialog>
-
-  <footer class="footer"><div class="layout footer-inner"><a href="#top" class="footer-brand">UTKARSH SINGH <span>↗</span></a><p>Built with purpose. <span id="current-year">2026</span></p><a href="#top" id="back-to-top" aria-label="Back to top of page">Back to top ↑</a></div></footer>
+  <footer class="footer"><div class="layout footer-inner"><a href="#top" class="footer-brand">UTKARSH SINGH <span>↗</span></a><p>Built with purpose. <span id="current-year">2026</span></p><a href="#top" id="back-to-top" class="back-top-button" aria-label="Back to top of page">Back to top ↑</a></div></footer>
 </body>
 </html>

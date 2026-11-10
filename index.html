@@ -52,19 +52,26 @@
         </div>
         <div class="hero-bottom"><span class="hero-bottom-label">CURRENT FOCUS</span><span>Cloud migration · .NET 10 · Azure services</span></div>
       </div>
-      <div class="hero-visual" aria-label="Diagram of .NET 10 modernization and supporting cloud technologies" role="img">
+      <div class="hero-visual" aria-label="Rotating technology diagram with .NET 10 at the centre and Azure Cloud, Angular, SQL Server, DevOps, C# and Web API orbiting it" role="img">
         <div class="visual-halo" aria-hidden="true"></div>
         <div class="architecture-frame">
           <div class="architecture-top"><span><span class="status-light"></span> SYSTEMS / MODERNIZATION</span><span>01 — 04</span></div>
           <div class="orbital-field" aria-hidden="true">
-            <div class="orb-ring ring-one"></div><div class="orb-ring ring-two"></div>
+            <div class="orbit-track orbit-track-outer">
+              <div class="orbit-rotor">
+                <div class="orbit-point orbit-top"><span class="orbit-token">☁ Azure Cloud</span></div>
+                <div class="orbit-point orbit-right"><span class="orbit-token">△ Angular 22</span></div>
+                <div class="orbit-point orbit-bottom"><span class="orbit-token">▥ SQL Server</span></div>
+                <div class="orbit-point orbit-left"><span class="orbit-token">◇ Azure DevOps</span></div>
+              </div>
+            </div>
+            <div class="orbit-track orbit-track-inner">
+              <div class="orbit-rotor">
+                <div class="orbit-point orbit-top"><span class="orbit-token">⌘ Web API</span></div>
+                <div class="orbit-point orbit-bottom"><span class="orbit-token">{ } C#</span></div>
+              </div>
+            </div>
             <div class="center-core"><div class="core-mini">CORE / PLATFORM</div><div class="core-name">.NET <strong>10</strong></div><div class="core-caption">application layer</div></div>
-            <div class="float-chip chip-azure"><span class="chip-icon">◈</span> Azure Cloud</div>
-            <div class="float-chip chip-identity"><span class="chip-icon">⌁</span> Identity</div>
-            <div class="float-chip chip-insights"><span class="chip-icon">⌁</span> App Insights</div>
-            <div class="float-chip chip-vault"><span class="chip-icon">◇</span> Key Vault</div>
-            <div class="float-chip chip-angular"><span class="chip-icon">△</span> Angular 22</div>
-            <span class="node n1"></span><span class="node n2"></span><span class="node n3"></span>
           </div>
           <div class="architecture-footer"><span>MODERNIZE</span><span class="footer-line"></span><span>SECURE</span><span class="footer-line"></span><span>OBSERVE</span></div>
         </div>
@@ -174,23 +181,60 @@
           <p class="kicker">OFF THE KEYBOARD, ON TWO WHEELS</p>
           <h2 id="beyond-heading">Curious by nature.<br><span class="soft-accent">A biker at heart.</span></h2>
           <p>When I'm not working on software, you'll usually find me planning the next motorcycle trip or exploring unfamiliar roads. Long-distance touring is one of my favorite ways to spend time off — especially in the Himalayas.</p>
-          <p>I've explored routes through Ladakh, Zanskar, Spiti and Sikkim on my KTM RC 390. Every ride comes with its own mix of planning, changing conditions and memorable landscapes.</p>
+          <p>I've explored routes through Ladakh, Zanskar, Himachal and Sikkim on my KTM RC 390. Every ride comes with its own mix of planning, changing conditions and memorable landscapes.</p>
         </div>
         <div class="beyond-panel reveal">
           <div class="beyond-panel-head"><span class="beyond-emoji" aria-hidden="true">↗</span><span>RIDING JOURNAL / HIGHLIGHTS</span></div>
           <div class="beyond-moto"><span class="beyond-label">MY RIDE</span><strong>KTM RC 390</strong></div>
           <div class="beyond-moto"><span class="beyond-label">FAVORITE TERRAIN</span><strong>Mountain roads &amp; high-altitude routes</strong></div>
-          <div class="beyond-routes"><span class="beyond-label">PLACES I'VE EXPLORED</span><div class="beyond-route-pills"><span>Ladakh</span><span>Zanskar</span><span>Spiti</span><span>Sikkim</span></div></div>
+          <div class="beyond-routes">
+            <span class="beyond-label">PLACES I'VE EXPLORED</span>
+            <div class="beyond-route-pills" role="group" aria-label="Ride destinations and photo highlights">
+              <button type="button" class="ride-place" data-gallery="ladakh" aria-haspopup="dialog">Ladakh <span aria-hidden="true">↗</span></button>
+              <button type="button" class="ride-place" data-gallery="zanskar" aria-haspopup="dialog">Zanskar <span aria-hidden="true">↗</span></button>
+              <button type="button" class="ride-place" data-gallery="himachal" aria-haspopup="dialog">Himachal <span aria-hidden="true">↗</span></button>
+              <button type="button" class="ride-place" data-gallery="sikkim" aria-haspopup="dialog">Sikkim <span aria-hidden="true">↗</span></button>
+            </div>
+            <p class="ride-hint">Click a destination to view ride photos.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="contact-section" id="contact" aria-labelledby="contact-heading"><div class="layout contact-inner">
-      <div class="reveal"><p class="kicker">07 / GET IN TOUCH</p><h2 id="contact-heading">Let's build something <span class="gradient-text">that lasts.</span></h2><p>Interested in .NET, backend, or Azure engineering opportunities? I'd be glad to connect.</p><div class="contact-actions"><a class="button button-primary" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=singhutkarsh224%40gmail.com&amp;su=Hello%20Utkarsh" target="_blank" rel="noopener noreferrer">Email via Gmail <span aria-hidden="true">↗</span></a><button id="copy-email" class="button button-ghost" type="button" data-email="singhutkarsh224@gmail.com">Copy email <span aria-hidden="true">⧉</span></button><a class="button button-ghost" href="https://www.linkedin.com/in/utkarsh-singh-5039b7153/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></div><a class="contact-mail" href="mailto:singhutkarsh224@gmail.com">singhutkarsh224@gmail.com</a><div class="copy-status" id="copy-status" role="status" aria-live="polite"></div></div>
+      <div class="reveal"><p class="kicker">07 / GET IN TOUCH</p><h2 id="contact-heading">Let's build something <span class="gradient-text">that lasts.</span></h2><p>Interested in .NET, backend, or Azure engineering opportunities? I'd be glad to connect.</p><div class="contact-actions">
+        <a class="button button-primary" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=singhutkarsh224%40gmail.com&amp;su=Hello%20Utkarsh%20-%20Engineering%20Opportunity" target="_blank" rel="noopener noreferrer" aria-label="Compose an email to Utkarsh in Gmail">Compose in Gmail <span aria-hidden="true">↗</span></a>
+        <a class="button button-ghost" href="mailto:singhutkarsh224@gmail.com?subject=Hello%20Utkarsh%20-%20Engineering%20Opportunity" aria-label="Compose an email using your default email application">Use email app <span aria-hidden="true">↗</span></a>
+        <button id="copy-email" class="button button-ghost" type="button" data-email="singhutkarsh224@gmail.com">Copy email <span aria-hidden="true">⧉</span></button>
+        <a class="button button-ghost" href="https://www.linkedin.com/in/utkarsh-singh-5039b7153/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+      </div>
+      <span class="contact-mail">singhutkarsh224@gmail.com</span>
+      <p class="contact-note">Choose Gmail or your email app to open a message, then press Send. No mail app installed? Use Copy email.</p><div class="copy-status" id="copy-status" role="status" aria-live="polite"></div></div>
       <div class="contact-watermark" aria-hidden="true">US<span>.</span></div>
     </div></section>
   </main>
 
-  <footer class="footer"><div class="layout footer-inner"><a href="#top" class="footer-brand">UTKARSH SINGH <span>↗</span></a><p>Built with purpose. <span id="current-year">2026</span></p><a href="#top">Back to top ↑</a></div></footer>
+
+  <dialog id="ride-gallery" class="ride-dialog" aria-labelledby="ride-gallery-title" aria-describedby="ride-gallery-caption">
+    <div class="ride-dialog-head">
+      <div><p class="ride-dialog-eyebrow">BEYOND THE CODE / ON TWO WHEELS</p><h2 id="ride-gallery-title">Ride highlights</h2></div>
+      <button type="button" class="ride-dialog-close" id="ride-close" aria-label="Close photo gallery">×</button>
+    </div>
+    <div class="ride-dialog-stage">
+      <img id="ride-gallery-image" alt="" src="" decoding="async">
+      <div id="ride-gallery-empty" class="ride-gallery-empty" hidden>
+        <div aria-hidden="true">✦</div><p>Himachal adventures</p><span>More photos from the ride to come.</span>
+      </div>
+    </div>
+    <div class="ride-dialog-foot">
+      <p id="ride-gallery-caption" aria-live="polite">A moment from the road.</p>
+      <div class="ride-gallery-controls"><span id="ride-gallery-count" aria-live="polite"></span>
+        <button type="button" id="ride-prev" aria-label="Previous photo">←</button>
+        <button type="button" id="ride-next" aria-label="Next photo">→</button>
+      </div>
+    </div>
+  </dialog>
+
+  <footer class="footer"><div class="layout footer-inner"><a href="#top" class="footer-brand">UTKARSH SINGH <span>↗</span></a><p>Built with purpose. <span id="current-year">2026</span></p><a href="#top" id="back-to-top" aria-label="Back to top of page">Back to top ↑</a></div></footer>
 </body>
 </html>

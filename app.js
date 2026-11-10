@@ -31,12 +31,20 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
   document.addEventListener('click', e => { if (!nav.contains(e.target) && !menu.contains(e.target)) closeMenu(); });
 
+  // Each project has its own details; never stretch its neighbor or open two cards at once.
   document.querySelectorAll('.project-more').forEach(button => {
     button.addEventListener('click', () => {
-      const details = document.getElementById(button.getAttribute('aria-controls'));
       const opening = button.getAttribute('aria-expanded') !== 'true';
-      details.hidden = !opening;
-      button.setAttribute('aria-expanded', String(opening));
+      document.querySelectorAll('.project-more').forEach(other => {
+        other.setAttribute('aria-expanded', 'false');
+        const panel = document.getElementById(other.getAttribute('aria-controls'));
+        if (panel) panel.hidden = true;
+      });
+      if (opening) {
+        button.setAttribute('aria-expanded', 'true');
+        const panel = document.getElementById(button.getAttribute('aria-controls'));
+        if (panel) panel.hidden = false;
+      }
     });
   });
 
@@ -90,4 +98,103 @@
   } else {
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
   }
+
+  // Show destination-specific photos, using copies without embedded metadata.
+  const galleries = {
+    ladakh: { title: 'Ladakh', photos: [
+      {src:'assets/rides/ladakh-khardung-la.webp', caption:'At Khardung La', alt:'Utkarsh beside the Khardung La mountain pass sign'},
+      {src:'assets/rides/ladakh-rc390.webp', caption:'A moment with my KTM RC 390 on a Ladakh highway', alt:'Utkarsh leaning toward his orange KTM RC 390 on an open Himalayan road'}
+    ]},
+    zanskar: { title: 'Zanskar', photos: [
+      {src:'assets/rides/zanskar-gombo-ranjan.webp', caption:'Gombo Ranjan and the Zanskar landscape', alt:'Utkarsh in front of the imposing Gombo Ranjan mountain, with prayer flags'}
+    ]},
+    himachal: { title: 'Himachal', photos: [] },
+    sikkim: { title: 'Sikkim', photos: [
+      {src:'assets/rides/sikkim-snow-pass.webp', caption:'Snowy mountain roads in Sikkim', alt:'Utkarsh pointing toward snow-covered mountains from beside his motorcycle'},
+      {src:'assets/rides/sikkim-rc390.webp', caption:'A mountain stop with the RC 390', alt:'Utkarsh in riding gear standing near his orange KTM RC 390 with snowy peaks behind'}
+    ]}
+  };
+  const galleryDialog = document.getElementById('ride-gallery');
+  if (galleryDialog) {
+    const galleryTitle = document.getElementById('ride-gallery-title');
+    const galleryImage = document.getElementById('ride-gallery-image');
+    const galleryEmpty = document.getElementById('ride-gallery-empty');
+    const galleryCaption = document.getElementById('ride-gallery-caption');
+    const galleryCount = document.getElementById('ride-gallery-count');
+    const prev = document.getElementById('ride-prev');
+    const next = document.getElementById('ride-next');
+    const close = document.getElementById('ride-close');
+    let active = 'ladakh';
+    let index = 0;
+    let trigger = null;
+
+    function renderGallery() {
+      const gallery = galleries[active];
+      const photos = gallery.photos;
+      galleryTitle.textContent = gallery.title;
+      if (photos.length) {
+        const photo = photos[index];
+        galleryImage.src = photo.src;
+        galleryImage.alt = photo.alt;
+        galleryImage.hidden = false;
+        galleryEmpty.hidden = true;
+        galleryCaption.textContent = photo.caption;
+        galleryCount.textContent = `${index + 1} / ${photos.length}`;
+      } else {
+        galleryImage.hidden = true;
+        galleryImage.removeAttribute('src');
+        galleryEmpty.hidden = false;
+        galleryCaption.textContent = 'More highlights from Himachal to come.';
+        galleryCount.textContent = '';
+      }
+      prev.disabled = photos.length < 2;
+      next.disabled = photos.length < 2;
+    }
+
+    document.querySelectorAll('[data-gallery]').forEach(button => {
+      button.addEventListener('click', () => {
+        const selected = button.dataset.gallery;
+        if (!galleries[selected]) return;
+        trigger = button;
+        active = selected;
+        index = 0;
+        renderGallery();
+        galleryDialog.showModal();
+        body.classList.add('ride-modal-open');
+        close.focus();
+      });
+    });
+    function stepPhoto(amount) {
+      const photos = galleries[active].photos;
+      if (photos.length < 2) return;
+      index = (index + amount + photos.length) % photos.length;
+      renderGallery();
+    }
+    prev.addEventListener('click', () => stepPhoto(-1));
+    next.addEventListener('click', () => stepPhoto(1));
+    close.addEventListener('click', () => galleryDialog.close());
+    galleryDialog.addEventListener('close', () => {
+      body.classList.remove('ride-modal-open');
+      if (trigger) trigger.focus();
+    });
+    galleryDialog.addEventListener('click', event => {
+      const rect = galleryDialog.getBoundingClientRect();
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) galleryDialog.close();
+    });
+    galleryDialog.addEventListener('keydown', event => {
+      if (event.key === 'ArrowRight') { event.preventDefault(); stepPhoto(1); }
+      if (event.key === 'ArrowLeft') { event.preventDefault(); stepPhoto(-1); }
+    });
+  }
+
+  // Explicitly scroll to the top on every click, including when #top is already in the URL.
+  document.querySelectorAll('a[href="#top"]').forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      window.scrollTo({top:0,left:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+      // Do not leave an unnecessary #top fragment in the shareable URL.
+      if (window.location.hash) window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    });
+  });
+
 })();

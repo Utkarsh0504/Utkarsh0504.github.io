@@ -24,3 +24,58 @@ body[data-theme="light"] .architecture-frame{background:linear-gradient(145deg,#
 .beyond-route-pills span{font-size:11px;font-weight:650;color:var(--soft);border:1px solid var(--line-strong);background:var(--surface-2);border-radius:7px;padding:7px 12px}
 @media(max-width:860px){.beyond-grid{gap:35px;grid-template-columns:1fr 1fr}.beyond-panel{padding:24px}}
 @media(max-width:600px){.beyond-grid{grid-template-columns:1fr}.beyond-panel{padding:25px}.project-context{min-height:0}}
+
+/* Contact links open a compose draft rather than sending mail automatically. */
+.contact-section .contact-note{font-size:12px!important;line-height:1.65;color:#93b6c8!important;margin:12px 0 0!important;max-width:660px!important}
+
+
+/* Independent expandable project cards */
+.project-grid{align-items:start}
+.project-card{align-self:start;height:auto;min-height:0}
+.project-details[hidden]{display:none!important}
+
+/* Orbiting technologies; the central .NET platform remains stationary. */
+.orbital-field{isolation:isolate}
+.orbit-track{position:absolute;left:50%;top:50%;width:340px;height:340px;transform:translate(-50%,-50%);border:1px dashed rgba(116,196,226,.3);border-radius:50%;pointer-events:none;z-index:1}
+.orbit-track-inner{width:238px;height:238px;border:1px solid rgba(104,174,218,.2)}
+.orbit-rotor{position:absolute;inset:0;animation:orbit-turn 42s linear infinite}
+.orbit-track-inner .orbit-rotor{animation:orbit-turn 29s linear infinite reverse}
+.orbit-point{position:absolute;white-space:nowrap}
+.orbit-top{top:0;left:50%;transform:translate(-50%,-50%)}
+.orbit-bottom{bottom:0;left:50%;transform:translate(-50%,50%)}
+.orbit-left{left:0;top:50%;transform:translate(-50%,-50%)}
+.orbit-right{right:0;top:50%;transform:translate(50%,-50%)}
+.orbit-token{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:11px;padding:9px 11px;background:#102940;border:1px solid rgba(118,220,222,.52);color:#e2f7fc;box-shadow:0 5px 24px rgba(3,8,20,.55),0 0 17px rgba(77,192,211,.15);font-size:11px;font-weight:750;line-height:1.25;letter-spacing:.015em;animation:orbit-turn 42s linear infinite reverse}
+.orbit-track-inner .orbit-token{animation:orbit-turn 29s linear infinite;font-size:10px;padding:7px 11px;color:#c5f2e9}
+.center-core{z-index:4;width:158px;height:158px;box-shadow:0 0 0 9px rgba(102,186,224,.045),0 0 45px rgba(63,191,225,.23)}
+@keyframes orbit-turn{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* Destination buttons and accessible photo gallery */
+.beyond-route-pills .ride-place{appearance:none;display:inline-flex;align-items:center;gap:9px;font:inherit;font-size:11px;font-weight:750;color:var(--soft);background:var(--surface-2);border:1px solid var(--line-strong);border-radius:8px;padding:9px 12px;cursor:pointer;transition:color .2s,background .2s,transform .2s,border-color .2s}
+.beyond-route-pills .ride-place span{font-size:13px;color:var(--teal)}
+.beyond-route-pills .ride-place:hover,.beyond-route-pills .ride-place:focus-visible{transform:translateY(-2px);border-color:var(--teal);color:var(--ink);background:var(--surface)}
+.ride-hint{margin:13px 0 0!important;font-size:11px!important;line-height:1.45!important;color:var(--muted)}
+body.ride-modal-open{overflow:hidden}
+.ride-dialog{width:min(780px,calc(100vw - 24px));max-width:780px;max-height:calc(100dvh - 30px);margin:auto;padding:0;border:1px solid var(--line-strong);border-radius:20px;background:var(--surface);color:var(--ink);box-shadow:0 22px 100px rgba(0,0,0,.5);overflow:auto}
+.ride-dialog::backdrop{background:rgba(3,8,19,.84);backdrop-filter:blur(12px)}
+.ride-dialog-head,.ride-dialog-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 20px}
+.ride-dialog-head{border-bottom:1px solid var(--line)}
+.ride-dialog-head h2{font-size:21px;line-height:1.25;letter-spacing:-.035em;margin:0}
+.ride-dialog-eyebrow{font-size:9px;color:var(--teal);letter-spacing:.14em;font-weight:800;margin:0 0 4px}
+.ride-dialog-close{color:var(--ink);background:var(--surface-2);border:1px solid var(--line-strong);border-radius:10px;width:38px;height:38px;display:grid;place-items:center;font-size:25px;line-height:1;cursor:pointer;flex-shrink:0}
+.ride-dialog-stage{position:relative;display:grid;place-items:center;min-height:260px;background:#091623}
+.ride-dialog-stage img{width:100%;height:min(66vh,620px);object-fit:contain;display:block}
+.ride-gallery-empty{width:100%;min-height:340px;background:radial-gradient(circle at 50% 50%,#25415a,#0b1929 65%);color:#e6f6ff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:7px;text-align:center;padding:30px}
+.ride-gallery-empty[hidden],.ride-dialog-stage img[hidden]{display:none!important}
+.ride-gallery-empty>div{font-size:45px;color:#86dcca}
+.ride-gallery-empty p{font-size:24px;font-weight:750;margin:0}
+.ride-gallery-empty span{color:#a8c1d4;font-size:13px}
+.ride-dialog-foot{border-top:1px solid var(--line);min-height:66px}
+.ride-dialog-foot>p{color:var(--soft);font-size:12px;line-height:1.45;margin:0;max-width:450px}
+.ride-gallery-controls{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.ride-gallery-controls span{font-size:11px;color:var(--muted);min-width:33px;text-align:center}
+.ride-gallery-controls button{width:34px;height:34px;background:var(--surface-2);border:1px solid var(--line-strong);border-radius:9px;color:var(--ink);cursor:pointer}
+.ride-gallery-controls button:disabled{opacity:.35;cursor:default}
+@media(max-width:600px){.orbit-track{width:235px;height:235px}.orbit-track-inner{width:168px;height:168px}.orbit-token{font-size:8px;padding:6px 7px;border-radius:8px}.orbit-track-inner .orbit-token{font-size:8px;padding:5px 7px}.center-core{width:124px;height:124px}.ride-dialog-head,.ride-dialog-foot{padding:13px 14px}.ride-dialog-head h2{font-size:18px}.ride-dialog-stage img{height:min(61vh,540px)}.ride-dialog-foot>p{font-size:11px}}
+@media(max-width:370px){.orbit-track{width:204px;height:204px}.orbit-track-inner{width:153px;height:153px}.orbit-token{font-size:7px;padding:5px 6px}.orbit-track-inner .orbit-token{font-size:7px;padding:4px 5px}.center-core{width:112px;height:112px}}
+@media(prefers-reduced-motion:reduce){.orbit-rotor,.orbit-token{animation:none!important}.beyond-route-pills .ride-place{transition:none}}

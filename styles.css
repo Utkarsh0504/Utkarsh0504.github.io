@@ -145,3 +145,39 @@ body.ride-modal-open{overflow:hidden}
 /* Keep decorative page glow from creating a horizontal scrollbar. */
 .page-glow{right:0;max-width:100vw}
 html,body{overflow-x:clip}
+
+/* Refinement: 3 technologies on each orbit, balanced spacing, legible upright labels. */
+.hero-visual{height:525px}
+.orbit-universe{width:520px;height:520px;flex-shrink:0}
+.orbit-ring-outer{width:404px;height:404px}
+.orbit-ring-inner{width:266px;height:266px}
+.orbit-core{width:146px;height:146px}
+.orbiting-node{animation:orbit-spin 78s linear infinite;animation-delay:0s}
+.orbiting-node--outer{width:404px;height:404px;margin-left:-202px;margin-top:-202px;--orbit-speed:78s}
+.orbiting-node--inner{width:266px;height:266px;margin-left:-133px;margin-top:-133px;--orbit-speed:59s;animation-direction:reverse}
+.orbiting-node{animation-duration:var(--orbit-speed)}
+.orbit-chip{font-size:11px;padding:8px 11px;animation-duration:var(--orbit-speed)}
+.orbiting-node--inner .orbit-chip{font-size:10px;padding:7px 10px;animation-direction:reverse}
+@keyframes orbit-spin{from{transform:rotate(var(--angle))}to{transform:rotate(calc(var(--angle) + 360deg))}}
+@keyframes orbit-counter{from{transform:translate(-50%,-50%) rotate(calc(0deg - var(--angle)))}to{transform:translate(-50%,-50%) rotate(calc(-360deg - var(--angle)))}}
+@media(prefers-reduced-motion:reduce){.orbiting-node{animation:none!important;transform:rotate(var(--angle))}.orbit-chip{animation:none!important;transform:translate(-50%,-50%) rotate(calc(0deg - var(--angle)))}}
+
+/* Widen the whole riding panel. Show every pixel of landscape and portrait images. */
+.beyond-grid{grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:38px;align-items:start}
+.beyond-panel{padding:26px;min-width:0}
+.beyond-route-pills{gap:9px}
+.beyond-route-pills .ride-place{font-size:12px;padding:9px 6px;min-height:44px}
+.ride-gallery-prompt{min-height:145px;border:1px dashed var(--line-strong);border-radius:13px;background:radial-gradient(circle at 50% 25%,rgba(76,216,203,.07),transparent 65%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;color:var(--muted);padding:22px}
+.ride-gallery-prompt span{color:var(--teal);font-size:23px;line-height:1}
+.ride-gallery-prompt p{font-size:13px;line-height:1.55;margin:0}
+.ride-gallery-prompt[hidden]{display:none!important}
+.ride-main-photo{display:grid;grid-template-rows:minmax(0,1fr) auto;height:clamp(445px,48vw,640px);min-height:0;background:#0c1726}
+.ride-main-photo>img{grid-row:1;object-fit:contain;object-position:center;width:100%;height:100%;min-height:0}
+.ride-main-photo:after{display:none}
+.ride-main-caption{position:relative;left:auto;right:auto;bottom:auto;grid-row:2;background:rgba(15,32,47,.96);padding:11px 14px;color:#eaf7fb;min-height:43px}
+.ride-arrow{top:calc((100% - 44px)/2)}
+.ride-photo-strip{margin-top:14px}
+@media(max-width:1050px){.orbit-universe{transform:scale(.83)}.beyond-grid{gap:28px}}
+@media(max-width:860px){.hero-visual{height:450px}.orbit-universe{transform:scale(.80)}.beyond-grid{grid-template-columns:1fr}.beyond-panel{width:100%;max-width:none}.ride-main-photo{height:clamp(430px,65vw,690px)}}
+@media(max-width:650px){.hero-visual{height:340px}.orbit-universe{transform:scale(.61)}.beyond-panel{padding:18px}.beyond-route-pills{gap:7px}.beyond-route-pills .ride-place{font-size:11px;min-height:40px}.ride-main-photo{height:clamp(340px,110vw,550px)}.ride-main-caption{padding:9px 10px;min-height:40px}}
+@media(max-width:380px){.orbit-universe{transform:scale(.55)}.ride-main-photo{height:clamp(330px,115vw,480px)}}

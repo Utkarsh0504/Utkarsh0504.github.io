@@ -57,12 +57,13 @@
           <div class="orbit-ring orbit-ring-outer"></div><div class="orbit-ring orbit-ring-inner"></div>
           <div class="orbit-star star-1"></div><div class="orbit-star star-2"></div><div class="orbit-star star-3"></div><div class="orbit-star star-4"></div><div class="orbit-star star-5"></div><div class="orbit-star star-6"></div>
           <div class="orbit-core"><span>CORE / PLATFORM</span><strong>.NET <em>10</em></strong><small>application layer</small></div>
-          <div class="orbiting-node" style="--delay:0s;--angle:0deg"><span class="orbit-chip"><span class="chip-glyph">☁</span> Azure Cloud</span></div>
-          <div class="orbiting-node" style="--delay:-11s;--angle:60deg"><span class="orbit-chip"><span class="chip-glyph angular-glyph">⬡</span> Angular 22</span></div>
-          <div class="orbiting-node" style="--delay:-22s;--angle:120deg"><span class="orbit-chip"><span class="chip-glyph">▤</span> SQL Server</span></div>
-          <div class="orbiting-node" style="--delay:-33s;--angle:180deg"><span class="orbit-chip"><span class="chip-glyph">⬡</span> Azure DevOps</span></div>
-          <div class="orbiting-node" style="--delay:-44s;--angle:240deg"><span class="orbit-chip"><span class="chip-glyph">&lt;/&gt;</span> Web API</span></div>
-          <div class="orbiting-node" style="--delay:-55s;--angle:300deg"><span class="orbit-chip"><span class="chip-glyph">{ }</span> C#</span></div>
+          <!-- Three technologies on each of two independent, counter-rotating paths. -->
+          <div class="orbiting-node orbiting-node--outer" style="--angle:0deg"><span class="orbit-chip"><span class="chip-glyph">☁</span> Azure Cloud</span></div>
+          <div class="orbiting-node orbiting-node--outer" style="--angle:120deg"><span class="orbit-chip"><span class="chip-glyph">▤</span> SQL Server</span></div>
+          <div class="orbiting-node orbiting-node--outer" style="--angle:240deg"><span class="orbit-chip"><span class="chip-glyph">⬡</span> Azure DevOps</span></div>
+          <div class="orbiting-node orbiting-node--inner" style="--angle:60deg"><span class="orbit-chip"><span class="chip-glyph angular-glyph">⬡</span> Angular 22</span></div>
+          <div class="orbiting-node orbiting-node--inner" style="--angle:180deg"><span class="orbit-chip"><span class="chip-glyph">&lt;/&gt;</span> Web API</span></div>
+          <div class="orbiting-node orbiting-node--inner" style="--angle:300deg"><span class="orbit-chip"><span class="chip-glyph">{ }</span> C#</span></div>
         </div>
       </div>
       <a class="scroll-cue" href="#proof"><span class="scroll-line" aria-hidden="true"></span> SCROLL TO EXPLORE</a>
@@ -178,13 +179,14 @@
         <div class="beyond-panel reveal">
           <div class="beyond-panel-head"><span class="gallery-status-dot" aria-hidden="true"></span><span>PLACES I'VE EXPLORED</span></div>
           <div class="beyond-route-pills" role="group" aria-label="Select a ride destination">
-            <button type="button" class="ride-place" data-gallery="ladakh" aria-controls="ride-inline-gallery" aria-expanded="false">Ladakh</button>
-            <button type="button" class="ride-place" data-gallery="zanskar" aria-controls="ride-inline-gallery" aria-expanded="false">Zanskar</button>
-            <button type="button" class="ride-place" data-gallery="himachal" aria-controls="ride-inline-gallery" aria-expanded="false">Himachal</button>
-            <button type="button" class="ride-place" data-gallery="sikkim" aria-controls="ride-inline-gallery" aria-expanded="false">Sikkim</button>
-            <button type="button" class="ride-place active" data-gallery="kashmir" aria-controls="ride-inline-gallery" aria-expanded="true">Kashmir</button>
+            <button type="button" class="ride-place" data-gallery="ladakh" aria-controls="ride-inline-gallery" aria-expanded="false" aria-pressed="false">Ladakh</button>
+            <button type="button" class="ride-place" data-gallery="zanskar" aria-controls="ride-inline-gallery" aria-expanded="false" aria-pressed="false">Zanskar</button>
+            <button type="button" class="ride-place" data-gallery="himachal" aria-controls="ride-inline-gallery" aria-expanded="false" aria-pressed="false">Himachal</button>
+            <button type="button" class="ride-place" data-gallery="sikkim" aria-controls="ride-inline-gallery" aria-expanded="false" aria-pressed="false">Sikkim</button>
+            <button type="button" class="ride-place" data-gallery="kashmir" aria-controls="ride-inline-gallery" aria-expanded="false" aria-pressed="false">Kashmir</button>
           </div>
-          <div class="ride-inline-gallery" id="ride-inline-gallery" role="region" aria-label="Riding photographs">
+          <div class="ride-gallery-prompt" id="ride-gallery-prompt"><span aria-hidden="true">✦</span><p>Choose a destination above to explore the ride photos.</p></div>
+          <div class="ride-inline-gallery" id="ride-inline-gallery" role="region" aria-label="Riding photographs" hidden>
             <div class="ride-main-photo">
               <img id="ride-gallery-image" src="assets/rides/kashmir-highway.webp" alt="Open road through a mountain valley in Kashmir" width="1500" height="1000" loading="lazy" decoding="async">
               <button type="button" id="ride-prev" class="ride-arrow ride-prev" aria-label="Previous riding photo">&#8249;</button>

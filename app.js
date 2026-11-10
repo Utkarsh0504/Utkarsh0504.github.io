@@ -31,20 +31,13 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
   document.addEventListener('click', e => { if (!nav.contains(e.target) && !menu.contains(e.target)) closeMenu(); });
 
-  // Each project has its own details; never stretch its neighbor or open two cards at once.
+  // Each project can be opened or closed independently so multiple details can be compared.
   document.querySelectorAll('.project-more').forEach(button => {
     button.addEventListener('click', () => {
       const opening = button.getAttribute('aria-expanded') !== 'true';
-      document.querySelectorAll('.project-more').forEach(other => {
-        other.setAttribute('aria-expanded', 'false');
-        const panel = document.getElementById(other.getAttribute('aria-controls'));
-        if (panel) panel.hidden = true;
-      });
-      if (opening) {
-        button.setAttribute('aria-expanded', 'true');
-        const panel = document.getElementById(button.getAttribute('aria-controls'));
-        if (panel) panel.hidden = false;
-      }
+      const panel = document.getElementById(button.getAttribute('aria-controls'));
+      button.setAttribute('aria-expanded', String(opening));
+      if (panel) panel.hidden = !opening;
     });
   });
 
@@ -132,7 +125,8 @@
     const total = document.getElementById('ride-photo-total');
     const prev = document.getElementById('ride-prev');
     const next = document.getElementById('ride-next');
-    let currentPlace = 'kashmir';
+    const placeholder = document.getElementById('ride-gallery-prompt');
+    let currentPlace = null;
     let currentPhoto = 0;
 
     function renderPhoto() {
@@ -182,6 +176,7 @@
         tab.setAttribute('aria-pressed',String(on));
       });
       galleryPanel.hidden=false;
+      placeholder.hidden=true;
       renderPhoto();
     }
     tabs.forEach(button=>button.addEventListener('click',()=>selectPlace(button.dataset.gallery)));
@@ -197,7 +192,12 @@
       if(e.key==='ArrowRight'){e.preventDefault();stepPhoto(1);}
       if(e.key==='ArrowLeft'){e.preventDefault();stepPhoto(-1);}
     });
-    selectPlace('kashmir');
+    // The gallery starts unselected; clicking any one of the five tabs opens its images.
+    tabs.forEach(tab=>{
+      tab.classList.remove('active');
+      tab.setAttribute('aria-expanded','false');
+      tab.setAttribute('aria-pressed','false');
+    });
   }
 
   // Force top navigation even when already on #top or after browser-history restoration.
